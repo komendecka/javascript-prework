@@ -1,19 +1,19 @@
-var argButtonName, buttonPaper, buttonRock, buttonScissors, argComputerMove, argMoveId, argPlayerMove, computerMove, playerInput, playerMove, randomNumber;
+var buttonPaper, buttonRock, buttonScissors, computerMove, randomNumber, playerMove;
 
 buttonRock = document.getElementById('button-rock');
-buttonRock.addEventListener('click', function(){ buttonClicked('Kamień'); });
+buttonRock.addEventListener('click', function(){ buttonClicked('kamień'); });
 buttonPaper = document.getElementById('button-paper');
-buttonPaper.addEventListener('click', function(){ buttonClicked('Papier'); });
+buttonPaper.addEventListener('click', function(){ buttonClicked('papier'); });
 buttonScissors = document.getElementById('button-scissors');
-buttonScissors.addEventListener('click', function(){ buttonClicked('Nożyce'); });
+buttonScissors.addEventListener('click', function(){ buttonClicked('nożyce'); });
 
+/**
+ * co pokliknieciu buttona
+ */
 function buttonClicked(argButtonName) {
     clearMessages();
     console.log(argButtonName + ' został kliknięty');
     playerMove = argButtonName;
-    console.log('wybór ruchu gracza to: ' + playerInput);
-    printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
-    console.log('ruch gracza to: ' + playerMove);
     randomNumber = Math.floor(Math.random() * 3 + 1);
     console.log('wylosowana liczba to: ' + randomNumber);
     computerMove = getMoveName(randomNumber);
@@ -21,7 +21,9 @@ function buttonClicked(argButtonName) {
     displayResult(playerMove, computerMove);
 }
 
-
+/**
+ * jaki ruch po losowaniu
+ */
 function getMoveName(argMoveId) {
     console.log('wywołano funkcję getMoveName z argumentem: ' + argMoveId);
     if (argMoveId == 1) {
@@ -36,7 +38,9 @@ function getMoveName(argMoveId) {
     }
 }
 
-
+/**
+ * wyświetl wynik gry
+ */
 function displayResult(argPlayerMove, argComputerMove) {
     console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
     if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
@@ -50,4 +54,5 @@ function displayResult(argPlayerMove, argComputerMove) {
     } else {
         printMessage('Przegrywasz :(');
     }
+    printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
 }
