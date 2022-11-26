@@ -1,10 +1,9 @@
-var buttonPaper, buttonRock, buttonScissors, computerMove, randomNumber, playerMove;
 
-buttonRock = document.getElementById('button-rock');
+const buttonRock = document.getElementById('button-rock');
 buttonRock.addEventListener('click', function(){ buttonClicked('kamień'); });
-buttonPaper = document.getElementById('button-paper');
+const buttonPaper = document.getElementById('button-paper');
 buttonPaper.addEventListener('click', function(){ buttonClicked('papier'); });
-buttonScissors = document.getElementById('button-scissors');
+const buttonScissors = document.getElementById('button-scissors');
 buttonScissors.addEventListener('click', function(){ buttonClicked('nożyce'); });
 
 /**
@@ -12,11 +11,11 @@ buttonScissors.addEventListener('click', function(){ buttonClicked('nożyce'); }
  */
 function buttonClicked(argButtonName) {
     clearMessages();
+    const playerMove = argButtonName;
     console.log(argButtonName + ' został kliknięty');
-    playerMove = argButtonName;
-    randomNumber = Math.floor(Math.random() * 3 + 1);
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
     console.log('wylosowana liczba to: ' + randomNumber);
-    computerMove = getMoveName(randomNumber);
+    const computerMove = getMoveName(randomNumber);
     console.log('ruch komputera to: ' + computerMove);
     displayResult(playerMove, computerMove);
 }
